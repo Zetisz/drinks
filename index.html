@@ -22,13 +22,15 @@
         </div>
     </div>
 
-    <form id="form">
+    <form id="form" class="was-validated">
             <div class="row">
             <div class="col">
                 <input type="text" id="dname" class="form-control" placeholder="Name">
+                <div class="invalid-feedback">nem lehet üres</div>
             </div>
             <div class="col">
                 <input type="text" id="price" class="form-control" placeholder="Price">
+                <div class="invalid-feedback">nem lehet negatív</div>
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-primary">Add</button>
