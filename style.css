@@ -6,5 +6,5 @@ label {
     color: whitesmoke;
 }
 input {
-    background-color: darkgray;
+    background-color: darkgray !important;
 }
