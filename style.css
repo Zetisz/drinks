@@ -1,3 +1,10 @@
 body {
     background-color: grey !important;
 }
+
+label {
+    color: whitesmoke;
+}
+input {
+    background-color: darkgray;
+}
