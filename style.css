@@ -8,3 +8,32 @@ label {
 input {
     background-color: darkgray !important;
 }
+
+
+.msg {
+    display: block;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.msg.error {
+    color: red;
+}
+
+.msg.success {
+    color: green;
+}
+
+input {
+    outline: none;
+}
+
+input.error-border {
+    border: 2px solid red;
+}
+
+input.success-border {
+    border: 2px solid green;
+}

@@ -22,15 +22,15 @@
         </div>
     </div>
 
-    <form id="form" class="was-validated">
+    <form id="form" onsubmit="return validateForm()" method="post">
             <div class="row">
             <div class="col">
-                <input type="text" id="dname" class="form-control" placeholder="Name">
-                <div class="invalid-feedback">nem lehet üres</div>
+                <input type="text" id="dname"  placeholder="Name" class="form-control" required>
+                <span id="dnameMsg" class="msg"></span>
             </div>
             <div class="col">
-                <input type="text" id="price" class="form-control" placeholder="Price">
-                <div class="invalid-feedback">nem lehet negatív</div>
+                <input type="number" id="price" value="1" min="1" class="form-control" required>
+                <span id="priceMsg" class="msg"></span>
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-primary">Add</button>
