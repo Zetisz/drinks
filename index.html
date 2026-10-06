@@ -22,14 +22,14 @@
         </div>
     </div>
 
-    <form id="form" onsubmit="return validateForm()" method="post">
+    <form id="form" onsubmit="return validate()" method="post">
             <div class="row">
             <div class="col">
-                <input type="text" id="dname"  placeholder="Name" class="form-control" required>
+                <input type="text" id="dname" name="dname" placeholder="Name" class="form-control" required>
                 <span id="dnameMsg" class="msg"></span>
             </div>
             <div class="col">
-                <input type="number" id="price" value="1" min="1" class="form-control" required>
+                <input type="number" id="price" name="price" value="1" min="1" class="form-control" required>
                 <span id="priceMsg" class="msg"></span>
             </div>
             <div class="col">

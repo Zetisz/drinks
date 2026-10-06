@@ -20,7 +20,9 @@ for (const drink of drinksList){
   table.appendChild(tr)
 }
 
-document.getElementById("form").addEventListener('submit', function(event){
+const form = document.getElementById("form");
+
+form.addEventListener('submit', function(event){
     event.preventDefault()
 
     const result = validate(true);
@@ -41,7 +43,7 @@ document.getElementById("form").addEventListener('submit', function(event){
     }
 })
 
-const fields = ['dname, price'];
+const fields = ['dname', 'price'];
 
 fields.forEach(id => {
     const element = document.getElementById(id);
@@ -60,6 +62,7 @@ fields.forEach(id => {
 
 function setMsg(id, text, ok = false) {
     const span = document.getElementById(id + 'Msg');
+
     const input = document.getElementById(id);
 
     span.textContent = text;
@@ -81,9 +84,9 @@ function validate(submit = false) {
 
     // Name
     if (submit || document.getElementById('dname').dataset.touched === 'true') {
-        if (dname.length > 0) {
+        if (dname.length === 0) {
             setMsg(
-                'username',
+                'dname',
                 "can't be empty"
             );
             valid = false;
@@ -94,7 +97,7 @@ function validate(submit = false) {
 
     // Price
     if (submit || document.getElementById('price').dataset.touched === 'true') {
-        if (price < 1 || price / 10) {
+        if (price < 1 || price % 10 !== 0) {
             setMsg(
                 'price',
                 'has to be positive, and dividable by 10'
@@ -104,6 +107,5 @@ function validate(submit = false) {
             setMsg('price', '✔', true);
         }
     }
-
     return valid;
 }
