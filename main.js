@@ -118,14 +118,14 @@ function validate(submit = false) {
             msg = 'has to be positive';
             valid = false;
         } 
-        else if (price % 10 !== 0) {
-            msg = 'has to be divisible by 10';
-            valid = false;
-        } 
         else if (price > 5000) {
             msg = 'has to be under 5000';
             valid = false;
         }
+        else if (price % 10 !== 0) {
+            msg = 'has to be divisible by 10';
+            valid = false;
+        } 
         else {
             msg = 'OK';
         }
