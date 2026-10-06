@@ -112,7 +112,7 @@ function validate(submit = false) {
         setMsg('dname', msg, valid);
     }
 
-    // fix for bugged out coloring
+    // fix for bugged out coloring & validation
     if (!valid) {
         invalid = true;
         valid = true;
@@ -138,6 +138,10 @@ function validate(submit = false) {
         }
 
         setMsg('price', msg, valid)
+    }
+
+    if (!valid) {
+        invalid = true;
     }
 
     if (submit && !invalid) {
