@@ -88,6 +88,7 @@ function Reset() {
 
 function validate(submit = false) {
     let valid = true;
+    let invalid = false;
 
     const data = new FormData(form);
     const dname = data.get('dname')?.trim();
@@ -109,6 +110,12 @@ function validate(submit = false) {
         }
 
         setMsg('dname', msg, valid);
+    }
+
+    // fix for bugged out coloring
+    if (!valid) {
+        invalid = true;
+        valid = true;
     }
 
     // Price
@@ -133,9 +140,9 @@ function validate(submit = false) {
         setMsg('price', msg, valid)
     }
 
-    if (submit) {
+    if (submit && !invalid) {
         Reset();
     }
 
-    return valid;
+    return !invalid;
 }
