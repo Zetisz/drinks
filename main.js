@@ -6,6 +6,7 @@ let drinksList = [
   {name: "Jeges tea", price: 600},
 ];
 
+// Init
 const table = document.getElementById("table")
 for (const drink of drinksList){
   const tr = document.createElement("tr");
@@ -20,6 +21,7 @@ for (const drink of drinksList){
   table.appendChild(tr)
 }
 
+// Add Drink Form
 const form = document.getElementById("form");
 
 form.addEventListener('submit', function(event){
@@ -60,9 +62,9 @@ fields.forEach(id => {
     });
 });
 
+// set msg & border for validation
 function setMsg(id, text, ok = false) {
     const span = document.getElementById(id + 'Msg');
-
     const input = document.getElementById(id);
 
     span.textContent = text;
@@ -73,39 +75,67 @@ function setMsg(id, text, ok = false) {
     input.classList.add(ok ? 'success-border' : 'error-border');
 }
 
+// Removes previous validation after submit
+function Reset() {
+    fields.forEach(id => {
+        const span = document.getElementById(id + 'Msg');
+        const input = document.getElementById(id);
+        span.textContent = '';
+        span.classList.remove('error', 'success');
+        input.classList.remove('error-border', 'success-border');
+    })
+}
 
 function validate(submit = false) {
     let valid = true;
 
     const data = new FormData(form);
-
     const dname = data.get('dname')?.trim();
     const price = Number(data.get('price'));
 
     // Name
     if (submit || document.getElementById('dname').dataset.touched === 'true') {
+        let msg;
         if (dname.length === 0) {
-            setMsg(
-                'dname',
-                "can't be empty"
-            );
+            msg = "can't be empty";
             valid = false;
-        } else {
-            setMsg('dname', '✔', true);
+        } 
+        else if (dname.length > 20) {
+            msg = 'name too long';
+            valid = false;
         }
+        else {
+            msg = 'OK';
+        }
+
+        setMsg('dname', msg, valid);
     }
 
     // Price
     if (submit || document.getElementById('price').dataset.touched === 'true') {
-        if (price < 1 || price % 10 !== 0) {
-            setMsg(
-                'price',
-                'has to be positive, and dividable by 10'
-            );
+        let msg;
+        if (price < 1) {
+            msg = 'has to be positive';
             valid = false;
-        } else {
-            setMsg('price', '✔', true);
+        } 
+        else if (price % 10 !== 0) {
+            msg = 'has to be divisible by 10';
+            valid = false;
+        } 
+        else if (price > 5000) {
+            msg = 'has to be under 5000';
+            valid = false;
         }
+        else {
+            msg = 'OK';
+        }
+
+        setMsg('price', msg, valid)
     }
+
+    if (submit) {
+        Reset();
+    }
+
     return valid;
 }

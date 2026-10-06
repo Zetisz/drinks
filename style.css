@@ -9,6 +9,9 @@ input {
     background-color: darkgray !important;
 }
 
+form {
+    margin-left: 8px;
+}
 
 .msg {
     display: block;
@@ -19,7 +22,7 @@ input {
 }
 
 .msg.error {
-    color: red;
+    color: crimson;
 }
 
 .msg.success {
@@ -31,7 +34,7 @@ input {
 }
 
 input.error-border {
-    border: 2px solid red;
+    border: 2px solid crimson;
 }
 
 input.success-border {
